@@ -1,0 +1,13 @@
+[Unit]
+Description=Deletes spurious files and folders in old_alternative_projects
+After=network.target
+
+[Service]
+WorkingDirectory=/home/mic/python/old_projects_watchdog/old_projects_watchdog/
+ExecStart=/usr/bin/python3.10 old_projects_watchdog.py
+User=mic
+Group=mic
+
+[Install]
+WantedBy=multi-user.target
+
