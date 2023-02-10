@@ -32,6 +32,7 @@ class WatchOldAlternative:
     def __init__(self):
         self.observer = Observer()
 
+    # @snoop
     def run(self):
         """
         Runs the handler class.
@@ -56,24 +57,22 @@ class Handler(FileSystemEventHandler):
     """
 
     @staticmethod
-    # @snoop
+    @snoop
     def on_created(event):
         if event.is_directory:
             pth = event.src_path
-            pp(pth)
             tail = os.path.basename(os.path.normpath(pth))
             del_dir = [".git", "logs", "build", "__pycache__"]
             if tail in del_dir:
-                cmd = f"/home/mic/.local/bin/trash-put -d {pth}"
+                cmd = f"/usr/bin/rm -r {pth}"
                 subprocess.run(cmd, shell=True)
-            cmd = f"/home/mic/.local/bin/trash-put {pth}"
             if tail.endswith("egg-info"):
                 subprocess.run(cmd, shell=True)
         else:
-            pth = event.src_path
-            tail = os.path.basename(os.path.normpath(pth))
+            path = event.src_path
+            tail = os.path.basename(os.path.normpath(path))
             del_file = [".gitignore", ".gitconfig", "LICENSE", "MANIFEST.in", "pyproject.toml", "setup.py", "setup.cfg", "__init__.py"]
-            cmd = f"/home/mic/.local/bin/trash-put {pth}"
+            cmd = f"/usr/bin/rm {path}"
             if tail in del_file:
                 subprocess.run(cmd, shell=True)
 

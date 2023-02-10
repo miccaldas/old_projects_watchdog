@@ -1,0 +1,10 @@
+[Unit]
+Description=Updating the scraped Pypi list.
+Requires=old_projects_watchdog.service
+
+[Timer]
+OnActiveSec=2m
+
+[Install]
+WantedBy=timers.target
+

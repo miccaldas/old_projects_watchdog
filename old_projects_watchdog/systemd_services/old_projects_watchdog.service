@@ -7,6 +7,7 @@ WorkingDirectory=/home/mic/python/old_projects_watchdog/old_projects_watchdog/
 ExecStart=/usr/bin/python3.10 old_projects_watchdog.py
 User=mic
 Group=mic
+Type=simple
 
 [Install]
 WantedBy=multi-user.target
