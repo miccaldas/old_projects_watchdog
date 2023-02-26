@@ -64,7 +64,7 @@ class Handler(FileSystemEventHandler):
             tail = os.path.basename(os.path.normpath(pth))
             del_dir = [".git", "logs", "build", "__pycache__"]
             if tail in del_dir:
-                cmd = f"/usr/bin/rm -r {pth}"
+                cmd = f"/home/mic/.local/bin/trash-put {pth}"
                 subprocess.run(cmd, shell=True)
             if tail.endswith("egg-info"):
                 subprocess.run(cmd, shell=True)
@@ -72,7 +72,7 @@ class Handler(FileSystemEventHandler):
             path = event.src_path
             tail = os.path.basename(os.path.normpath(path))
             del_file = [".gitignore", ".gitconfig", "LICENSE", "MANIFEST.in", "pyproject.toml", "setup.py", "setup.cfg", "__init__.py"]
-            cmd = f"/usr/bin/rm {path}"
+            cmd = f"/home/mic/.local/bin/trash-put {path}"
             if tail in del_file:
                 subprocess.run(cmd, shell=True)
 
