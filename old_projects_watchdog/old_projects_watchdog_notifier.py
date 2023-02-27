@@ -1,74 +1,53 @@
-from time import sleep
+"""
+Sends notification when old_projects_watchdogs runs.
+"""
+
+import inspect
+import os
+import pickle
 
 import requests
 import snoop
 from snoop import pp
-from watchdog.events import FileSystemEventHandler
-from watchdog.observers import Observer
 
 
 def type_watch(source, value):
     return "type({})".format(source), type(value)
 
 
-snoop.install(watch_extras=[type_watch])
+snoop.install(out="snoop.log", overwrite=True, watch_extras=[type_watch])
 
 
-class WatchCronlog:
+@snoop
+def notifier():
     """
-    Set 'cronlogs' as the directory
-    to watch.
-    """
-
-    watchDirectory = "/home/mic/cronlogs"
-
-    def __init__(self):
-        self.observer = Observer()
-
-    # @snoop
-    def run(self):
-        """
-        Runs the handler class.
-        """
-        event_handler = Handler()
-        self.observer.schedule(event_handler, self.watchDirectory, recursive=False)
-        self.observer.start()
-        try:
-            while True:
-                sleep(10)
-        except:
-            self.observer.stop()
-            print("Observer Stopped")
-
-        self.observer.join()
-
-
-class Handler(FileSystemEventHandler):
-    """
-    Defines event to be monitord and what
-    to do when it happens.
+    Sends a ntfy notification to my phone
+    everytime the watchdog cronlog is
+    altered.
     """
 
-    def __init__(self):
-        self.path = "/home/mic/cronlogs/old_watchdog.txt"
-
-    @snoop
-    def on_modified(self, event):
-        """
-        Sends the output of the watchdog cronlog as a attachment
-        to my phone via ntfy.
-        """
-        if self.path == event.src_path:
-            requests.put(
-                "https://ntfy.sh/mic",
-                data=open("/home/mic/cronlogs/old_watchdog.txt", "r"),
-                headers={
-                    "Title": "Old Projects watchdog has run.",
-                    "Filename": "old_watchdog.txt",
-                },
-            )
+    path = "/home/mic/cronlogs/old_watchdog.txt"
+    # This os command registers when the file was last altered.
+    last_alt = os.path.getmtime(path)
+    pick_folder = "/home/mic/cronlogs/last_alterations_files/"
+    file_paths = [f"{pick_folder}{i.strip()}" for i in os.listdir(pick_folder)]
+    alt_file = f"{pick_folder}watchdog_last_at.bin"
+    if alt_file in file_paths:
+        with open(alt_file, "rb") as f:
+            altf = pickle.load(f)
+            if altf != last_alt:
+                requests.put(
+                    "https://ntfy.sh/mic",
+                    data=open(path, "r"),
+                    headers={"title": "Watchdog", "filename": "watchdog.py"},
+                )
+                with open(alt_file, "wb") as f:
+                    pickle.dump(last_alt, f)
+    else:
+        with open(alt_file, "wb") as f:
+            pickle.dump(last_alt, f)
+    print(f"{inspect.currentframe().f_code.co_name} has run.")
 
 
 if __name__ == "__main__":
-    watch = WatchCronlog()
-    watch.run()
+    notifier()

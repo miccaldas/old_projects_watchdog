@@ -57,22 +57,21 @@ class Handler(FileSystemEventHandler):
     """
 
     @staticmethod
-    @snoop
     def on_created(event):
         if event.is_directory:
             pth = event.src_path
             tail = os.path.basename(os.path.normpath(pth))
             del_dir = [".git", "logs", "build", "__pycache__"]
             if tail in del_dir:
-                cmd = f"/home/mic/.local/bin/trash-put {pth}"
+                cmd = f"/usr/bin/trash-put {pth}"
                 subprocess.run(cmd, shell=True)
             if tail.endswith("egg-info"):
                 subprocess.run(cmd, shell=True)
-        else:
+        if event.is_file:
             path = event.src_path
             tail = os.path.basename(os.path.normpath(path))
             del_file = [".gitignore", ".gitconfig", "LICENSE", "MANIFEST.in", "pyproject.toml", "setup.py", "setup.cfg", "__init__.py"]
-            cmd = f"/home/mic/.local/bin/trash-put {path}"
+            cmd = f"/usr/bin/trash-put {path}"
             if tail in del_file:
                 subprocess.run(cmd, shell=True)
 
