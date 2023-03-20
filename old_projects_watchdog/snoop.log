@@ -1,40 +1,40 @@
-23:59:01.55 >>> Call to notifier in File "/home/mic/python/old_projects_watchdog/old_projects_watchdog/old_projects_watchdog_notifier.py", line 22
-23:59:01.55   22 | def notifier():
-23:59:01.55   29 |     path = "/home/mic/cronlogs/old_watchdog.txt"
-23:59:01.55 .......... path = '/home/mic/cronlogs/old_watchdog.txt'
-23:59:01.55 .......... type(path) = <class 'str'>
-23:59:01.55   31 |     last_alt = os.path.getmtime(path)
-23:59:01.55 .......... last_alt = 1678821458.1776752
-23:59:01.55 .......... type(last_alt) = <class 'float'>
-23:59:01.55   32 |     pick_folder = "/home/mic/cronlogs/last_alterations_files/"
-23:59:01.55 .......... pick_folder = '/home/mic/cronlogs/last_alterations_files/'
-23:59:01.55 .......... type(pick_folder) = <class 'str'>
-23:59:01.55   33 |     file_paths = [f"{pick_folder}{i.strip()}" for i in os.listdir(pick_folder)]
-    23:59:01.55 List comprehension:
-    23:59:01.55   33 |     file_paths = [f"{pick_folder}{i.strip()}" for i in os.listdir(pick_folder)]
-    23:59:01.55 .......... Iterating over <list_iterator object at 0x7f03f646ff70>
-    23:59:01.55 .......... Values of type(.0): <class 'list_iterator'>
-    23:59:01.55 .......... Values of pick_folder: '/home/mic/cronlogs/last_alterations_files/'
-    23:59:01.55 .......... Values of type(pick_folder): <class 'str'>
-    23:59:01.55 .......... Values of i: 'usr_last_at.bin', 'git_update_last_at.bin', 'watchdog_last_at.bin', 'boot_last_at.bin', 'opt_last_at.bin', 'srv_last_at.bin', 'var_last_at.bin', 'etc_last_at.bin', 'README.txt'
-    23:59:01.55 .......... Values of type(i): <class 'str'>
-    23:59:01.55 Result: ['/home/mic/cronlogs/last_alterations_files/usr_last_at.bin', '/home/mic/cronlogs/last_alterations_files/git_update_last_at.bin', '/home/mic/cronlogs/last_alterations_files/watchdog_last_at.bin', ..., '/home/mic/cronlogs/last_alterations_files/var_last_at.bin', '/home/mic/cronlogs/last_alterations_files/etc_last_at.bin', '/home/mic/cronlogs/last_alterations_files/README.txt']
-23:59:01.55   33 |     file_paths = [f"{pick_folder}{i.strip()}" for i in os.listdir(pick_folder)]
-23:59:01.55 .......... file_paths = ['/home/mic/cronlogs/last_alterations_files/usr_last_at.bin', '/home/mic/cronlogs/last_alterations_files/git_update_last_at.bin', '/home/mic/cronlogs/last_alterations_files/watchdog_last_at.bin', ..., '/home/mic/cronlogs/last_alterations_files/var_last_at.bin', '/home/mic/cronlogs/last_alterations_files/etc_last_at.bin', '/home/mic/cronlogs/last_alterations_files/README.txt']
-23:59:01.55 .......... len(file_paths) = 9
-23:59:01.55 .......... type(file_paths) = <class 'list'>
-23:59:01.55   34 |     alt_file = f"{pick_folder}watchdog_last_at.bin"
-23:59:01.55 .......... alt_file = '/home/mic/cronlogs/last_alterations_files/watchdog_last_at.bin'
-23:59:01.55 .......... len(alt_file) = 62
-23:59:01.55 .......... type(alt_file) = <class 'str'>
-23:59:01.55   35 |     if alt_file in file_paths:
-23:59:01.55   36 |         with open(alt_file, "rb") as f:
-23:59:01.55 .............. f = <_io.BufferedReader name='/home/mic/cronlogs/last_alterations_files/watchdog_last_at.bin'>
-23:59:01.55 .............. type(f) = <class '_io.BufferedReader'>
-23:59:01.55   37 |             altf = pickle.load(f)
-23:59:01.55 .................. altf = 1678821458.1776752
-23:59:01.55 .................. type(altf) = <class 'float'>
-23:59:01.55   38 |             if altf != last_alt:
-23:59:01.55   36 |         with open(alt_file, "rb") as f:
-23:59:01.55   49 |     print(f"{inspect.currentframe().f_code.co_name} has run.")
-23:59:01.55 <<< Return value from notifier: None
+23:59:02.38 >>> Call to notifier in File "/home/mic/python/old_projects_watchdog/old_projects_watchdog/old_projects_watchdog_notifier.py", line 22
+23:59:02.38   22 | def notifier():
+23:59:02.38   29 |     path = "/home/mic/cronlogs/old_watchdog.txt"
+23:59:02.38 .......... path = '/home/mic/cronlogs/old_watchdog.txt'
+23:59:02.38 .......... type(path) = <class 'str'>
+23:59:02.38   31 |     last_alt = os.path.getmtime(path)
+23:59:02.38 .......... last_alt = 1678821458.1776752
+23:59:02.38 .......... type(last_alt) = <class 'float'>
+23:59:02.38   32 |     pick_folder = "/home/mic/cronlogs/last_alterations_files/"
+23:59:02.38 .......... pick_folder = '/home/mic/cronlogs/last_alterations_files/'
+23:59:02.38 .......... type(pick_folder) = <class 'str'>
+23:59:02.38   33 |     file_paths = [f"{pick_folder}{i.strip()}" for i in os.listdir(pick_folder)]
+    23:59:02.38 List comprehension:
+    23:59:02.38   33 |     file_paths = [f"{pick_folder}{i.strip()}" for i in os.listdir(pick_folder)]
+    23:59:02.38 .......... Iterating over <list_iterator object at 0x7f8049f27f70>
+    23:59:02.38 .......... Values of type(.0): <class 'list_iterator'>
+    23:59:02.38 .......... Values of pick_folder: '/home/mic/cronlogs/last_alterations_files/'
+    23:59:02.38 .......... Values of type(pick_folder): <class 'str'>
+    23:59:02.38 .......... Values of i: 'usr_last_at.bin', 'git_update_last_at.bin', 'watchdog_last_at.bin', 'boot_last_at.bin', 'opt_last_at.bin', 'srv_last_at.bin', 'var_last_at.bin', 'etc_last_at.bin', 'README.txt'
+    23:59:02.38 .......... Values of type(i): <class 'str'>
+    23:59:02.38 Result: ['/home/mic/cronlogs/last_alterations_files/usr_last_at.bin', '/home/mic/cronlogs/last_alterations_files/git_update_last_at.bin', '/home/mic/cronlogs/last_alterations_files/watchdog_last_at.bin', ..., '/home/mic/cronlogs/last_alterations_files/var_last_at.bin', '/home/mic/cronlogs/last_alterations_files/etc_last_at.bin', '/home/mic/cronlogs/last_alterations_files/README.txt']
+23:59:02.38   33 |     file_paths = [f"{pick_folder}{i.strip()}" for i in os.listdir(pick_folder)]
+23:59:02.38 .......... file_paths = ['/home/mic/cronlogs/last_alterations_files/usr_last_at.bin', '/home/mic/cronlogs/last_alterations_files/git_update_last_at.bin', '/home/mic/cronlogs/last_alterations_files/watchdog_last_at.bin', ..., '/home/mic/cronlogs/last_alterations_files/var_last_at.bin', '/home/mic/cronlogs/last_alterations_files/etc_last_at.bin', '/home/mic/cronlogs/last_alterations_files/README.txt']
+23:59:02.38 .......... len(file_paths) = 9
+23:59:02.38 .......... type(file_paths) = <class 'list'>
+23:59:02.38   34 |     alt_file = f"{pick_folder}watchdog_last_at.bin"
+23:59:02.38 .......... alt_file = '/home/mic/cronlogs/last_alterations_files/watchdog_last_at.bin'
+23:59:02.38 .......... len(alt_file) = 62
+23:59:02.38 .......... type(alt_file) = <class 'str'>
+23:59:02.38   35 |     if alt_file in file_paths:
+23:59:02.38   36 |         with open(alt_file, "rb") as f:
+23:59:02.38 .............. f = <_io.BufferedReader name='/home/mic/cronlogs/last_alterations_files/watchdog_last_at.bin'>
+23:59:02.38 .............. type(f) = <class '_io.BufferedReader'>
+23:59:02.38   37 |             altf = pickle.load(f)
+23:59:02.38 .................. altf = 1678821458.1776752
+23:59:02.38 .................. type(altf) = <class 'float'>
+23:59:02.38   38 |             if altf != last_alt:
+23:59:02.38   36 |         with open(alt_file, "rb") as f:
+23:59:02.38   49 |     print(f"{inspect.currentframe().f_code.co_name} has run.")
+23:59:02.38 <<< Return value from notifier: None
