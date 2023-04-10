@@ -40,17 +40,10 @@ def file_checker():
     folder_content = []
     # os.walk will look in all sublevels of the dir tree for files or folders.
     for root, dirs, files in os.walk(pth):
-        for file in files + dirs:
-            folder_content.append(os.path.join(root, file))
-
+        folder_content.extend(os.path.join(root, file) for file in files + dirs)
     # 'del_dir' and 'del_files' list only names not paths. As folder_content collects paths,
     # we have to use 'os.path.basename(os.path.normpath())' to get only the names of files and folders.
-    deletes = [
-        i
-        for i in folder_content
-        if os.path.basename(os.path.normpath(i)) in del_dir
-        or os.path.basename(os.path.normpath(i)) in del_file
-    ]
+    deletes = [i for i in folder_content if os.path.basename(os.path.normpath(i)) in del_dir or os.path.basename(os.path.normpath(i)) in del_file]
 
     if deletes != []:
         for d in deletes:
