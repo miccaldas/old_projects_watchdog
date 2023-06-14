@@ -1,0 +1,11 @@
+[Unit]
+Description=Checks the self-named python folder, hourly for spurious files and folders.
+Requires=old_projects_watchdog.service
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+

@@ -7,18 +7,18 @@ and logs, cache, that sort of thing, they'll be deleted.
 import os
 import shutil
 
-# import snoop
-# from snoop import pp
+import snoop
+from snoop import pp
 
 
-# def type_watch(source, value):
-#   return "type({})".format(source), type(value)
+def type_watch(source, value):
+    return "type({})".format(source), type(value)
 
 
-# snoop.install(watch_extras=[type_watch])
+snoop.install(watch_extras=[type_watch])
 
 
-# @snoop
+@snoop
 def file_checker():
     """
     Checks if folder has files or subfolders in to delete lists.

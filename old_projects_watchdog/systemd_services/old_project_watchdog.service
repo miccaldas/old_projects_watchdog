@@ -1,0 +1,13 @@
+[Unit]
+Description=Checks the self-named python folder, hourly for spurious files and folders.
+After=network.target
+
+[Service]
+WorkingDirectory=/home/mic/python/old_projects_watchdog/old_projects_watchdog/
+ExecStart=/usr/bin/python file_checker.py
+User=mic
+Group=mic
+
+[Install]
+WantedBy=multi-user.target
+
